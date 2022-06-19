@@ -101,12 +101,11 @@ async def button(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     cursor = connection.cursor()
 
     SQL = "UPDATE astra SET frequency='{}' where id={}".format(freq,row_id)
-
     
     cursor.execute(SQL)
     connection.commit()
     connection.close()
-
+    
     await query.edit_message_text(text=f"Frequency set to: {query.data}")
 
 def main() -> None:
